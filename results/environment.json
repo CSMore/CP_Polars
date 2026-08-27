@@ -1,0 +1,15 @@
+{
+  "operating_system": "Windows-10-10.0.26200-SP0",
+  "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+  "logical_cpu_cores": 16,
+  "physical_cpu_cores": 10,
+  "ram_gb": 31.63,
+  "dataset_size_mb": 17.66,
+  "python": "3.11.7",
+  "polars": "1.44.1",
+  "pandas": "3.0.5",
+  "scikit_learn": "1.9.0",
+  "xgboost": "3.2.0",
+  "numpy": "2.4.6",
+  "benchmark_repetitions": 5
+}

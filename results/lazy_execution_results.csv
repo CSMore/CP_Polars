@@ -1,0 +1,3 @@
+Mode,Seconds,PeakMemoryIncreaseMB
+read_csv,0.02495160000398755,20.6875
+scan_csv_collect,0.022468100069090724,24.08203125

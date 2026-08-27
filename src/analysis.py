@@ -120,7 +120,7 @@ La menor diferencia se presento en `{smallest['Operation']}`, aunque Polars toda
 
 ### 4. ¿Que beneficios aporto Lazy Execution?
 
-En este experimento, lazy execution no mejoro el resultado. `read_csv` tardo {eager['Seconds']:.4f} segundos y aumento el pico de memoria aproximadamente {eager['PeakMemoryIncreaseMB']:.2f} MB; `scan_csv().collect()` tardo {lazy_row['Seconds']:.4f} segundos y aumento el pico aproximadamente {lazy_row['PeakMemoryIncreaseMB']:.2f} MB. El pipeline evaluado es corto, utiliza todas las columnas requeridas por la agregacion y el archivo solo ocupa {environment['dataset_size_mb']:.2f} MB, por lo que el costo de construir y optimizar el plan supera el ahorro potencial. Lazy execution seria mas beneficioso en pipelines largos, con proyeccion de pocas columnas o filtros capaces de descartar gran parte de los datos.
+En este experimento, lazy execution redujo marginalmente el tiempo: `read_csv` tardo {eager['Seconds']:.4f} segundos y aumento el pico de memoria aproximadamente {eager['PeakMemoryIncreaseMB']:.2f} MB; `scan_csv().collect()` tardo {lazy_row['Seconds']:.4f} segundos y aumento el pico aproximadamente {lazy_row['PeakMemoryIncreaseMB']:.2f} MB. Sin embargo, el modo lazy uso mas memoria en esta medicion. El pipeline evaluado es corto, utiliza todas las columnas requeridas por la agregacion y el archivo solo ocupa {environment['dataset_size_mb']:.2f} MB, por lo que la diferencia temporal es pequena. Lazy execution seria mas beneficioso en pipelines largos, con proyeccion de pocas columnas o filtros capaces de descartar gran parte de los datos.
 
 ### 5. ¿Que limitaciones se encontraron en Polars?
 
@@ -148,7 +148,7 @@ Se recomienda usar Polars en pipelines repetitivos o con cientos de miles de fil
 
 ## Conclusiones
 
-Los experimentos muestran que Polars fue mas rapido que Pandas en las seis operaciones comparadas y alcanzo {total['Speedup']:.2f}x en el pipeline completo. La escalabilidad confirma que la ventaja se mantiene al aumentar el numero de registros. Sin embargo, lazy execution no fue superior en tiempo ni memoria para este flujo corto, lo cual demuestra que su beneficio depende del plan de consulta y no debe asumirse automaticamente. En prediccion, {best_model['Model']} obtuvo el mejor balance de Accuracy, F1 y AUC. Por tanto, Polars es recomendable para el procesamiento de este dataset, mientras que la eleccion del modelo debe basarse en evidencia predictiva y en las necesidades de interpretabilidad.
+Los experimentos muestran que Polars fue mas rapido que Pandas en las seis operaciones comparadas y alcanzo {total['Speedup']:.2f}x en el pipeline completo. La escalabilidad confirma que la ventaja se mantiene al aumentar el numero de registros. Lazy execution fue ligeramente mas rapido, pero utilizo mas memoria para este flujo corto, lo cual demuestra que su beneficio depende del plan de consulta y no debe asumirse automaticamente. En prediccion, {best_model['Model']} obtuvo el mejor balance de Accuracy, F1 y AUC. Por tanto, Polars es recomendable para el procesamiento de este dataset, mientras que la eleccion del modelo debe basarse en evidencia predictiva y en las necesidades de interpretabilidad.
 """
 
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
