@@ -30,6 +30,25 @@ Este proyecto construye un pipeline reproducible para predecir si un vuelo se re
 | `Length`      | Numerica          | Duracion programada en minutos |
 | `Delay`       | Binaria           | Variable objetivo              |
 
+### Descarga y ubicación del dataset
+
+El dataset utilizado es **Airlines Dataset to Predict a Delay**, disponible públicamente en Kaggle:
+
+[Descargar dataset desde Kaggle](https://www.kaggle.com/datasets/jimschacko/airlines-dataset-to-predict-a-delay)
+
+Para ejecutar el proyecto:
+
+1. Ingrese al enlace de Kaggle.
+2. Seleccione **Download** para descargar el dataset.
+3. Descomprima el archivo descargado.
+4. Copie el archivo `Airlines.csv` dentro de la carpeta `data/` del proyecto.
+5. Confirme que la ruta final sea:
+
+```text
+CP_Polars/data/Airlines.csv
+```
+
+
 ## Decisiones de ingenieria
 
 - Se validan `DayOfWeek` entre 1 y 7, `Time` entre 0 y 1439, `Length > 0` y `Delay` dentro de `{0, 1}`.
